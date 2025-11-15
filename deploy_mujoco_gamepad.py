@@ -29,7 +29,8 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("config_file", type=str, help="config file name in the config folder")
+    parser.add_argument("config_file", type=str, nargs='?', default="e2_21dof.yaml", 
+                        help="config file name in the config folder (default: e2_21dof.yaml)")
     args = parser.parse_args()
     config_file = args.config_file
     with open(f"{LEGGED_GYM_ROOT_DIR}/deploy/deploy_mujoco/configs/{config_file}", "r") as f:

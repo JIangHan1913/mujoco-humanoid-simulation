@@ -93,21 +93,37 @@ fi
 
 # 6. 推送到远程仓库
 echo "6. 推送到远程仓库..."
-echo "   正在推送 main 分支到 origin..."
-if git push --progress -u origin main 2>&1; then
-    echo ""
-    echo "=== 推送成功！ ==="
-    echo "查看仓库: $REPO_URL"
-    echo "分支: main"
+# 检查远程分支是否存在
+REMOTE_EXISTS=$(git ls-remote --heads origin main 2>/dev/null | wc -l)
+if [ "$REMOTE_EXISTS" -gt 0 ]; then
+    echo "   检测到远程 main 分支已存在，将覆盖..."
+    if git push --progress -u origin main --force 2>&1; then
+        echo ""
+        echo "=== 推送成功！(已覆盖远程 main 分支) ==="
+        echo "查看仓库: $REPO_URL"
+        echo "分支: main"
+    else
+        echo ""
+        echo "=== 推送失败！ ==="
+        echo "可能的原因："
+        echo "  1. 网络连接问题"
+        echo "  2. 权限问题，请检查仓库访问权限"
+        exit 1
+    fi
 else
-    echo ""
-    echo "=== 推送失败！ ==="
-    echo "可能的原因："
-    echo "  1. 远程仓库尚未创建，请先在 Gitee 上创建仓库"
-    echo "  2. 网络连接问题"
-    echo "  3. 权限问题，请检查仓库访问权限"
-    echo ""
-    echo "如果是第一次推送，可能需要执行："
-    echo "  git push -u origin main --force"
-    exit 1
+    echo "   远程 main 分支不存在，首次推送..."
+    if git push --progress -u origin main 2>&1; then
+        echo ""
+        echo "=== 推送成功！ ==="
+        echo "查看仓库: $REPO_URL"
+        echo "分支: main"
+    else
+        echo ""
+        echo "=== 推送失败！ ==="
+        echo "可能的原因："
+        echo "  1. 远程仓库尚未创建，请先在 Gitee 上创建仓库"
+        echo "  2. 网络连接问题"
+        echo "  3. 权限问题，请检查仓库访问权限"
+        exit 1
+    fi
 fi

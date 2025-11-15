@@ -39,7 +39,9 @@
 
 ### 步骤1: 校准游戏手柄
 
-在使用游戏手柄控制机器人之前，**必须先校准游戏手柄**，以确保摇杆中位值正确。
+> **💡 提示**: 如果您使用的是**罗技 (Logitech)** 或**北通 (Betop)** 手柄，项目已经包含了默认的校准文件，**可以直接跳过校准步骤**，直接运行仿真程序。只有在使用其他品牌的手柄或默认校准不准确时，才需要运行校准脚本。
+
+在使用其他品牌游戏手柄控制机器人之前，**需要先校准游戏手柄**，以确保摇杆中位值正确。
 
 #### 1.1 运行校准脚本
 
@@ -85,13 +87,17 @@ python calibrate_gamepad.py
 
 ### 步骤2: 运行仿真
 
-校准完成后，运行仿真程序：
+运行仿真程序：
 
 ```bash
-python deploy_mujoco_gamepad.py e2_21dof.yaml
+# 使用默认配置文件 e2_21dof.yaml
+python deploy_mujoco_gamepad.py
+
+# 或者指定其他配置文件
+python deploy_mujoco_gamepad.py your_config.yaml
 ```
 
-其中 `e2_21dof.yaml` 是配置文件名称，位于 `configs/` 目录下。
+**注意**: 如果不指定配置文件，程序默认使用 `configs/e2_21dof.yaml`。配置文件位于 `configs/` 目录下。
 
 #### 2.1 启动仿真
 
