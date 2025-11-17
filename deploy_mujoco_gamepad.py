@@ -3,7 +3,6 @@ import time
 import mujoco.viewer
 import mujoco
 import numpy as np
-from legged_gym import LEGGED_GYM_ROOT_DIR
 import torch
 import yaml
 import pygame
@@ -33,10 +32,10 @@ if __name__ == "__main__":
                         help="config file name in the config folder (default: e2_21dof.yaml)")
     args = parser.parse_args()
     config_file = args.config_file
-    with open(f"{LEGGED_GYM_ROOT_DIR}/deploy/deploy_mujoco/configs/{config_file}", "r") as f:
+    with open(f"configs/{config_file}", "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
-        policy_path = config["policy_path"].replace("{LEGGED_GYM_ROOT_DIR}", LEGGED_GYM_ROOT_DIR)
-        xml_path = config["xml_path"].replace("{LEGGED_GYM_ROOT_DIR}", LEGGED_GYM_ROOT_DIR)
+        policy_path = config["policy_path"]
+        xml_path = config["xml_path"]
 
         simulation_duration = config["simulation_duration"]
         simulation_dt = config["simulation_dt"]
