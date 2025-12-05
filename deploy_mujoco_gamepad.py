@@ -28,8 +28,8 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("config_file", type=str, nargs='?', default="e2_21dof.yaml", 
-                        help="config file name in the config folder (default: e2_21dof.yaml)")
+    parser.add_argument("config_file", type=str, nargs='?', default="e3.yaml", 
+                        help="config file name in the config folder (default: e3.yaml)")
     args = parser.parse_args()
     config_file = args.config_file
     with open(f"configs/{config_file}", "r") as f:
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     obs = np.zeros(num_obs, dtype=np.float32)
 
     counter = 0
-
+    print("xml_path = ", xml_path)
     # Load robot model
     m = mujoco.MjModel.from_xml_path(xml_path)
     d = mujoco.MjData(m)

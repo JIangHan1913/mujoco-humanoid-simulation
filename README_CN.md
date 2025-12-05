@@ -12,9 +12,7 @@
 
 观看演示视频了解机器人实际运行效果：
 
-[![演示视频](https://img.youtube.com/vi/H3PtMParMXg/0.jpg)](https://www.youtube.com/watch?v=H3PtMParMXg)
-
-**视频链接**: [https://www.youtube.com/watch?v=H3PtMParMXg](https://www.youtube.com/watch?v=H3PtMParMXg)
+**Bilibili**: [观看演示视频](https://www.bilibili.com/video/BV1jx2YBqEPD/)
 
 ## 核心功能
 

@@ -8,9 +8,7 @@ This project uses MuJoCo physics engine for humanoid robot simulation and real-t
 
 Watch the demonstration video to see the robot in action:
 
-[![Demo Video](https://img.youtube.com/vi/H3PtMParMXg/0.jpg)](https://www.youtube.com/watch?v=H3PtMParMXg)
-
-**Video Link**: [https://www.youtube.com/watch?v=H3PtMParMXg](https://www.youtube.com/watch?v=H3PtMParMXg)
+**Bilibili**: [Watch Demo Video](https://www.bilibili.com/video/BV1jx2YBqEPD/)
 
 ## Core Features
 
